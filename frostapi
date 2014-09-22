@@ -3,3 +3,8 @@ function centerText(text)
   term.setCursorPos((w - #text) / 2, 2)
   write(text)
 end
+
+
+--[[
+WARNING: No longer in use
+]]--
