@@ -18,3 +18,4 @@ if answer == yes then
   sertexapi.center(6, "Startup file created.")
 elseif answer == no then
   sertexapi.center(6, "Startup file ignored.")
+end
