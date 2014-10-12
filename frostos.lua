@@ -5,7 +5,7 @@ os.loadAPI("frostos/apis/sertexapi")
 sertexapi.center(2, "FrostOS")
 sertexapi.center(3, "Installation")
 sertexapi.center(5, "Run on startup?")
-
+print("")
 write("Y/N>")
 local answer = read()
 local yes = "Y"
@@ -17,5 +17,6 @@ if answer == yes then
   fs.close()
   sertexapi.center(6, "Startup file created.")
 elseif answer == no then
-  sertexapi.center(6, "Startup file ignored.")
+  -- Don't create file
+  sertexapi.center(6, "Startup file not created.")
 end
