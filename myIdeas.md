@@ -13,4 +13,11 @@ I also want to integrate much APIs of LMNet, because I domt want wo write them a
 
 I hope that my Code isn't a problem. 
 ~timia2109
----
+
+System Pathes:
+ - /Programs (Apps inside)
+ - /Programs/[AppName] (AppFolder)
+ - /FrostOS (System Folder)
+ - /FrostOS/apis (Auto-loaded APIS)
+ - /FrostOS/system (App Folder for System Programms Run with run("sys/..."))
+ - /FrostOS/resources (additional scripts)
