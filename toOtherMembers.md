@@ -21,3 +21,9 @@ I'm on holiday right now, I have start the server again. I hope it's working now
 Enjoy playing!
 
 ~timia2109
+
+===
+I have created an Space at our Network. Join at: http://5.230.233.77/social/index.php?r=space/space&sguid=b2307d37-c341-44f5-9e50-226d77961e99
+I think it's better as Spam commits!
+
+~timia2109
