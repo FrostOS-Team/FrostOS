@@ -2,8 +2,10 @@ os.pullEvent = os.pullEventRaw
 
 os.loadAPI("frostos/apis/sertexapi")
 
+function setup()
+
 sertexapi.center(2, "FrostOS")
-sertexapi.center(3, "Installation")
+sertexapi.center(3, "Setup")
 sertexapi.center(5, "Run on startup?")
 print("")
 write("Y/N>")
@@ -19,3 +21,7 @@ elseif answer == no then
   -- Don't create file
   sertexapi.center(6, "Startup file not created.")
 end
+
+end
+
+setup()
