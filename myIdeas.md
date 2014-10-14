@@ -6,6 +6,7 @@ I will use /Programs/<Name> to store Programs there, like OneOS.
 	startup (the Code)
 	data (using the AppData function)
 	icon (yeah you know)
+       alias
 	...< Add your Ideas here>
 	`
 I also will create functions and tools so that you don't need much code for simple data. Like my AppData.load(). 
