@@ -29,3 +29,8 @@ System Pathes:
  - /FrostOS/apis (Auto-loaded APIS)
  - /FrostOS/system (App Folder for System Programms Run with run("sys/..."))
  - /FrostOS/resources (additional scripts)
+
+Well,
+I see where your going with this!
+We have a bash OS (LMNet) and we might aswell have a go at making a graphical one.
+**~Lewis**
