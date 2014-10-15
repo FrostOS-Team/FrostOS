@@ -14,8 +14,9 @@ local yes = "Y"
 local no = "N"
 if answer == yes then
   -- Run on startup
-  fs.open("/startup", "w").write("shell.run(\"/frostos/frostos\")")
-   fs.open("/startup", "w").close()
+  local h = fs.open("/startup", "w")
+  h.write("shell.run(\"/frostos/frostos\")")
+  h.close()
   sertexapi.center(6, "Startup file created.")
 elseif answer == no then
   -- Don't create file
