@@ -1,3 +1,21 @@
+local function makeToProgram(pCode,pIcon,pName,isSystemProg)
+  	local Path
+  	if isSystemProg then
+		Path = "/FrostOS/system/"..pName
+  	else
+  		Path = "Programs/"..pName
+  	end
+  	fs.makeDir(Path)
+  	
+  	local code = fs.open(Path.."/startup","w")
+  	code.write(pCode)
+  	code.close()
+
+  	local icon = fs.open(Path.."/icon","w")
+  	icon.write(pIcon)
+  	icon.close()
+end
+
 function clear()
   term.setBackgroundColor(colors.white)
   term.clear()
