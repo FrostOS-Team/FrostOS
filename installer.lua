@@ -16,7 +16,7 @@ local function makeToProgram(pCode,pIcon,pName,isSystemProg)
   	icon.close()
 end
 
-function clear()
+local function clear()
   term.setBackgroundColor(colors.white)
   term.clear()
   term.setCursorPos(1,1)
