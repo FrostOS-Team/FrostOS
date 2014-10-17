@@ -1,6 +1,8 @@
 --Better known as startup
 --WIP!!
-_G.CC = {} --Table for CC Apis
+_G.CC = { --Table for CC Apis
+	["notify"]
+	} 
 local whileTrue = {}
 
 shell.run("FrostOS/bootHelpers.lua")
