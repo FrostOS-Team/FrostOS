@@ -1,6 +1,10 @@
 -- Github For ComputerCraft
 -- Built for FrostOS
 local github = "api.github.com"
+local appdata = "/.frostos/.appdata/temp"
+if Superuser then
+  error(
+  end
 if not fs.exist("/.frostos/apis/git") then
 print("You don't have the git api! Installing from github...")
 f = fs.open("/.frostos/apis/git", "w")
