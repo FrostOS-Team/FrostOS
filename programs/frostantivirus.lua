@@ -13,5 +13,7 @@ virus2 = "N00B"
 virus3 = "os.reboot()"
 virus4 = "os.shutdown()"
 virusSpread1 = "function infect()"
-virusSpread2 = "fs.write("print(\"Infected\"))"
-virusSpread3 = "shell.run("cp", "startup", "/disk/startup")"
+virusSpread2 = "fs.write(\"print(\"Infected\"))"
+virusSpread3 = "shell.run(\"cp", "startup", "/disk/startup\")"
+
+print("Scanning")
