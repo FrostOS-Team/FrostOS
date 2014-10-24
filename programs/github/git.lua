@@ -2,8 +2,8 @@
 -- Built for FrostOS
 local github = "api.github.com"
 local appdata = "/.frostos/.appdata/temp"
-if Superuser then
-  error("Superuser program is denied because it can track logins.")
+if superuser then
+  error("Superuser program is denied because it logs programs that are executed.")
   end
 if not fs.exist("/.frostos/apis/git") then
 print("You don't have the git api! Installing from github...")
