@@ -3,7 +3,7 @@
 local github = "api.github.com"
 local appdata = "/.frostos/.appdata/temp"
 if Superuser then
-  error(
+  error("Superuser program is denied because it can track logins.", 1)
   end
 if not fs.exist("/.frostos/apis/git") then
 print("You don't have the git api! Installing from github...")
