@@ -1,5 +1,4 @@
 --Store additonal functions here. Will set to nil at the end of boot/startup
--- HTTP
 _G.boot = {}
 function boot.getTime()
 	local adress = "http://5.230.233.77/fOS/time"
@@ -12,7 +11,11 @@ function boot.getTime()
 		os.online = false
 	end
 end
--- Boot Logo
+
 function boot.bootLogo()
+
+end
+
+function boot.loadSettings()
 
 end
