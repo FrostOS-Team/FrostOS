@@ -2,7 +2,7 @@
 Frost Antivirus
 Developed for FrostOS but can be used in anything (including CraftOS)
 --]]
-local virusdatabase = fs.open(http.get(https://raw.githubusercontent.com/FrostOS-Team/FrostAntiVirus-Database/master/virus.data), "r")
+local virusdatabase = fs.open(http.get(https://raw.githubusercontent.com/FrostOS-Team/FrostAntiVirus-Database/master/virus.data).readAll(), "r")
 ver = "0.1"
 database = virusdatabase.readLine()
 virusdatabase.close()
