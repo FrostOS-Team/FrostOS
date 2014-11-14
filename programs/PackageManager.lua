@@ -13,4 +13,5 @@ if #tArgs[1] == "-pkg" then
    --[[ Check for valid package]]--
    -- if pkg2 == false then
     --print(pkg2 .." is a corrupt / invalid package file. Please contact the package author")
+   --end
 end
