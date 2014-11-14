@@ -6,8 +6,11 @@ local virusdatabase = fs.open(http.get(https://raw.githubusercontent.com/FrostOS
 ver = "0.1"
 database = virusdatabase.readLine()
 virusdatabase.close()
+local databasedl = fs.open("/database/virus.data", "r")
+local dldatabase = databasedl.readLine()
+databasedl.close()
 print("Frost Antivirus ".. ver)
-print("Database Version ".. database)
+print("Database Version ".. dldatabase)
 if database > dldatabase then
  print("Outdated Database! Downloading latest virus database...")
  local dldatabase = fs.open("/database/virus.data", "w")
