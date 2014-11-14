@@ -2,6 +2,7 @@
 Frost Antivirus
 Developed for FrostOS but can be used in anything (including CraftOS)
 --]]
+local virusdatabase = 
 ver = "0.1"
 print("Frost Antivirus".. ver)
 if FrostOS then 
