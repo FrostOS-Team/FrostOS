@@ -22,7 +22,6 @@ dl.write(virusdatabase.readAll())
 dl.close()
 term.setCursorPos(w, h)
 print("Frost Antivirus ".. ver)
-
 if FrostOS then 
  print("FrostOS found! Will scan directories")
 end
