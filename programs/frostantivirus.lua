@@ -4,6 +4,7 @@ Developed for FrostOS but can be used in anything (including CraftOS)
 --]]
 w, h = term.getSize()
 ver = "0.1"
+term.setCursorPos(w, h)
 write("Connecting to github... ")
 local virusdatabase = http.get("https://raw.githubusercontent.com/FrostOS-Team/FrostAntiVirus-Database/master/virus.data")
 term.setTextColor(colors.green)
