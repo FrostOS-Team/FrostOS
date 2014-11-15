@@ -30,7 +30,7 @@ print("Running antivirus...")
 
 print("Scanning")
 local data2 = fs.open("/.appdata/temp/virus.data", "r")
-local data = fs.open("/database/virus.data")
+local data = fs.open("/database/virus.data", "w")
 data2.write(textutils.serialize(data))
 data2.close()
 data.close()
