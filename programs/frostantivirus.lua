@@ -20,6 +20,7 @@ end
 local dl = fs.open("/database/virus.data", "w")
 dl.write(virusdatabase.readAll())
 dl.close()
+term.setCursorPos(w, h)
 print("Frost Antivirus ".. ver)
 
 if FrostOS then 
