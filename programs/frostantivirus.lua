@@ -10,7 +10,7 @@ term.setTextColor(colors.green)
 write("[ok]")
 term.setTextColor(colors.white)
 if fs.exists("/database/virus.data") == true then
- term.setCursorPos(w, h-1)
+ term.setCursorPos(w, h)
  write("Deleting old database...")
  fs.delete("/database/virus.data")
  term.setTextColor(colors.green)
