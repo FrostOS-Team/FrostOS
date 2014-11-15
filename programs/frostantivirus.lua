@@ -2,22 +2,23 @@
 Frost Antivirus
 Developed for FrostOS but can be used in anything (including CraftOS)
 --]]
-local virusdatabase = fs.open(http.get("https://raw.githubusercontent.com/FrostOS-Team/FrostAntiVirus-Database/master/virus.data").readAll(), "rb")
-ver = "0.1"
-database = virusdatabase.readLine()
-virusdatabase.close()
-local databasedl = fs.open("/database/virus.data", "rb")
-local dldatabase = databasedl.readLine()
-databasedl.close()
-print("Frost Antivirus ".. ver)
-print("Database Version ".. dldatabase)
-if database > dldatabase then
- print("Outdated Database! Downloading latest virus database...")
- local dldatabase = fs.open("/database/virus.data", "w")
- dldatabase.write(http.get("https://raw.githubusercontent.com/FrostOS-Team/FrostAntiVirus-Database/master/virus.data").readAll())
- dldatabase.close()
- print("Downloaded latest database!")
+write("Connecting to github... ")
+local virusdatabase = http.get("https://raw.githubusercontent.com/FrostOS-Team/FrostAntiVirus-Database/master/virus.data")
+term.setTextColor(colors.green)
+write("[ok]")
+term.setTextColor(colors.white)
+if fs.exists("/database/virus.data") == true then
+ write("Deleting old database...")
+ fs.delete("/database/virus.data")
+ term.setTextColor(colors.green)
+ write("[ok]")
+ term.setTextColor(colors.white)
 end
+local dl = fs.open("/database/virus.data", "w")
+dl.write(virusdatabase.readAll())
+dl.close()
+print("Frost Antivirus ".. ver)
+
 if FrostOS then 
  print("FrostOS found! Will scan directories")
 end
