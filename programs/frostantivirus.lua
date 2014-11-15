@@ -2,6 +2,7 @@
 Frost Antivirus
 Developed for FrostOS but can be used in anything (including CraftOS)
 --]]
+ver = "0.1"
 write("Connecting to github... ")
 local virusdatabase = http.get("https://raw.githubusercontent.com/FrostOS-Team/FrostAntiVirus-Database/master/virus.data")
 term.setTextColor(colors.green)
