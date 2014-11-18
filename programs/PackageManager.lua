@@ -11,8 +11,7 @@ if #tArgs[1] == "-pkg" then
    print("Package found")
    local pkg2 = textutils.serialize(pkg)
    --[[ Check for valid package]]--
-   -- if pkg2 == false then
-    --print(pkg2 .." is an invalid package file. Please contact the package author")
-    --return "Invalid"
-   --end
+   if type(tbl) ~= "table" then
+    error(pkg .." is an invalid package file. Please contact the package author", 0)
+   end
 end
