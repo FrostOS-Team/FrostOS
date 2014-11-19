@@ -25,19 +25,19 @@ end
  
 clear()
  
-textutils.slowPrint("Downloading SertexAPI...")
+textutils.slowPrint("Downloading SertexText...")
  
-sertexapiDownload = http.get("https://raw.githubusercontent.com/Sertex-Team/sertexos/master/sertexapi.lua")
-f = fs.open("frostos/apis/sertexapi", "w")
-f.write(sertexapiDownload.readAll())
+sertextextAPI = http.get("https://raw.githubusercontent.com/Sertex-Team/SertexText/master/src/lastest/sertextext.lua")
+f = fs.open("frostos/apis/sertextext", "w")
+f.write(sertextextAPI.readAll())
 f.close()
  
-os.loadAPI("frostos/apis/sertexapi")
+os.loadAPI("frostos/apis/sertextext")
  
 clear()
  
-sertexapi.center(1, "Installing FrostOS")
-sertexapi.center(2, "Credits: Check On GitHub @FrostOS-Team")
-sertexapi.center(3, "SertexAPI by Sertex-Team")
-sertexapi.center(4, "@FrostOS-Team thanks you for installing FrostOS")
+sertextext.center(1, "Installing FrostOS")
+sertextext.center(2, "Credits: Check On GitHub @FrostOS-Team")
+sertextext.center(3, "SertexText by Sertex-Team")
+sertextext.center(4, "@FrostOS-Team thanks you for installing FrostOS")
 os.setComputerLabel("FrostOS")
