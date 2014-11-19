@@ -1,12 +1,12 @@
 os.pullEvent = os.pullEventRaw
 
-os.loadAPI("frostos/apis/sertexapi")
+os.loadAPI("frostos/apis/sertextext")
 
 function setup()
 
-sertexapi.center(2, "FrostOS")
-sertexapi.center(3, "Setup")
-sertexapi.center(5, "Run on startup?")
+sertextext.center(2, "FrostOS")
+sertextext.center(3, "Setup")
+sertextext.center(5, "Run on startup?")
 print("")
 write("Y/N>")
 local answer = read()
@@ -17,10 +17,10 @@ if answer == yes then
   local h = fs.open("/startup", "w")
   h.write("shell.run(\"/frostos/frostos\")")
   h.close()
-  sertexapi.center(6, "Startup file created.")
+  sertextext.center(6, "Startup file created.")
 elseif answer == no then
   -- Don't create file
-  sertexapi.center(6, "Startup file not created.")
+  sertextext.center(6, "Startup file not created.")
 end
 
 end
