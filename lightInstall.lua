@@ -19,7 +19,7 @@ local function save()
   while #files > 0 do
     local event, key = os.pullEvent( "download" )
     local file = fs.open( key, "w" )
-    file.write( files[ key ].readAll():gsub( "[/r/n%s]+", " " )
+    file.write( files[ key ].readAll():gsub( "[/r/n%s]+", " " ):gsub( "--.-\n", "" ) )
     file.close()
     files[ key ] = nil
   end
