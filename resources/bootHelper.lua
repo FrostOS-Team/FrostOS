@@ -7,7 +7,7 @@ function boot.getTime()
 		os.online = true
 		return tonumber(req.readAll())
 	else
-		error("Can't acsess FrostOS Server!",0)
+		error("Can't access FrostOS Server!",0)
 		os.online = false
 	end
 end
