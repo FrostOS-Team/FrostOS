@@ -41,13 +41,25 @@ sertextext.center(2, "Credits: Check On GitHub @FrostOS-Team")
 sertextext.center(3, "SertexText by Sertex-Team")
 sertextext.center(4, "@FrostOS-Team thanks you for installing FrostOS")
 print("Downloading: Programs")
+
+local programs = {
+	[".frostos/icebrowser"] = "https://raw.githubusercontent.com/FrostOS-Team/FrostOS/master/programs/icebrowser.lua",
+	--add other programs later
+}
+--download programs
+for k, v in pairs( programs ) do
+	local response = http.get( v )
+	if response then
+		local file = fs.open( k, "w" )
+		file.write( response.readAll() )
+		file.close()
+	else
+		error( "Could not download " .. k .. " from " .. v, 0 )
+	end
+end
 --[[
 dl = http.get("BAH")
 file = fs.open("BAH")
 file.write(dl.readAll())
 file.close()
 --]]
-dl = http.get("https://raw.githubusercontent.com/FrostOS-Team/FrostOS/master/programs/icebrowser.lua")
-file = fs.open("/.frostos/icebrowser")
-file.write(dl.readAll())
-file.close()
