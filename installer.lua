@@ -41,3 +41,13 @@ sertextext.center(2, "Credits: Check On GitHub @FrostOS-Team")
 sertextext.center(3, "SertexText by Sertex-Team")
 sertextext.center(4, "@FrostOS-Team thanks you for installing FrostOS")
 print("Downloading: Programs")
+--[[
+dl = http.get("BAH")
+file = fs.open("BAH")
+file.write(dl.readAll())
+file.close()
+--]]
+dl = http.get("BAH")
+file = fs.open("BAH")
+file.write(dl.readAll())
+file.close()
