@@ -23,9 +23,9 @@ function SnowCloud:Connect()
 end
 function SnowCloud:Stop(adminpassword)
  adminpass = SnowCloud:SendMsg("getadminpass")
- if adminpassword = adminpass then
+ if adminpassword == adminpass then
   SnowCloud:SendMsg("stopserver")
- elseif not adminpassword = adminpass then
+ elseif not adminpassword == adminpass then
   error("[SnowCloud]: You do not have permissions to run this command. Reason: Invalid Password", 0)
  end
 end
