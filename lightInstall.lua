@@ -2,7 +2,7 @@
 --[[
 local files = {
   ["programs/icebrowser"] = "https://raw.githubusercontent.com/FrostOS-Team/FrostOS/master/programs/icebrowser.lua",
-  ["path"] = "url",
+  --["path"] = "url",
 }
 
 local function download()
