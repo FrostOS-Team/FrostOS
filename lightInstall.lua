@@ -1,6 +1,7 @@
 --WIP - remove comment tags when complete
 --[[
 local files = {
+  ["programs/icebrowser"] = "https://raw.githubusercontent.com/FrostOS-Team/FrostOS/master/programs/icebrowser.lua",
   ["path"] = "url",
 }
 
