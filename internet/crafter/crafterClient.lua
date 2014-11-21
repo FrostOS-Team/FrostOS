@@ -1,1 +1,4 @@
-local SnowCloud = "5.230.233.77/fOS/SnowCloud"
+--[[ Crafter Client ]]--
+os.loadAPI("../SnowCloud/SCC")
+--[[ Access The SnowCloud To See If Online ]]--
+SCC.testConnection()
