@@ -32,8 +32,8 @@ Files inside:
  - /Programs (Apps inside)
  - /Programs/[AppName] (AppFolder)
  - /FrostOS (System Folder)
- - /FrostOS/apis (Auto-loaded APIS)
- - /FrostOS/system (App Folder for System Programms Run with run("sys/..."))
+ - /FrostOS/apis (APIS loaded with APIMan (/system/apiman.sys))
+ - /FrostOS/system (App Folder for .sys files. Will get executed on startup or by getting called through FrostOS.sysRun(path) This is only used if you need to reload a system file like APIMan)
  - /FrostOS/resources (additional scripts)
 ```
 
