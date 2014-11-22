@@ -14,7 +14,11 @@ end
 
 function boot.loadSysFiles()
  sysPath = "/.frostos/system"
- 
+ local FileList = fs.list(sysPath)
+
+for _, file in ipairs(FileList) do
+  shell.run(file) 
+ end
 end
 
 function boot.bootLogo()
