@@ -12,6 +12,11 @@ function boot.getTime()
 	end
 end
 
+function boot.loadSysFiles()
+ sysPath = "/.frostos/system"
+ 
+end
+
 function boot.bootLogo()
 
 end
