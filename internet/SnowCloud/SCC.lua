@@ -1,13 +1,13 @@
 --[[ SnowCloud Communicate ]]--
 local SnowCloud = "5.230.233.77/fOS/SnowCloud/server.php?CC=1"
-
-function testConnection()
- --[[ Ping Server ]]--
- 
-end
 function SnowCloud:State()
  SnowCloudState = "Nil"
- if 
+ if --[[ Ping Server == True ]]-- then
+  SnowCloudState = "online"
+ elseif --[[ If there is no connection ]]-- then
+  SnowCloudState = "offline"
+ elseif --[[ Connection Timed Out ]]-- then
+  SnowCloudState = "timeout"
 end 
 function SnowCloud:SendMsg(msg)
  SnowCloudMsg = SnowCloud + "&msg=\"".. msg .. "\""
@@ -15,11 +15,26 @@ function SnowCloud:SendMsg(msg)
  if SnowCloudState == "offline" then
   printError("The SnowCloud is offline at the moment. Please try again later.")
  elseif SnowCloudState == "Nil" then
-  printError("Could not get state of the SnowCloud. Please try again later")
+  printError("Could not get state of the SnowCloud. Please try again later.")
+ elseif SnowCloudState == "timeout" then
+  printError("The SnowCloud connection timed out. Please try again later.")
+ elseif SnowCloudState == "online" then
+  http.post(SnowCloud, SnowCloudMsg)
+ end
 end
 function SnowCloud:Connect()
- state = SnowCloud:SendMsg("connectclient")
- print("[SnowCloud]: Connection ".. state)
+  SnowCloud:State()
+ if SnowCloudState == "offline" then
+  printError("The SnowCloud is offline at the moment. Please try again later.")
+ elseif SnowCloudState == "Nil" then
+  printError("Could not get state of the SnowCloud. Please try again later.")
+ elseif SnowCloudState == "timeout" then
+  printError("The SnowCloud connection timed out. Please try again later.")
+ elseif SnowCloudState == "online" then
+  http.post(SnowCloud, SnowCloudMsg)
+  state = SnowCloud:SendMsg("connectclient")
+  print("[SnowCloud]: Connection ".. state)
+ end
 end
 function SnowCloud:Stop(adminpassword)
  adminpass = SnowCloud:SendMsg("getadminpass")
