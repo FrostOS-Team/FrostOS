@@ -1,5 +1,6 @@
 --[[ SnowCloud Communicate ]]--
 local SnowCloud = "5.230.233.77/fOS/SnowCloud/server.php?CC=1"
+os.loadAPI("/.frostos/apis/SHA-256")
 function SnowCloud:State()
  SnowCloudState = "Nil"
  if --[[ Ping Server == True ]]-- then
@@ -38,6 +39,7 @@ function SnowCloud:Connect()
 end
 function SnowCloud:Stop(adminpassword)
  adminpass = SnowCloud:SendMsg("getadminpass")
+ SHA-256.sha256(adminpassword)
  if adminpassword == adminpass then
   SnowCloud:SendMsg("stopserver")
  elseif not adminpassword == adminpass then
