@@ -30,7 +30,7 @@ end
 term.setTextColor( colors.white )
 term.setBackgroundColor( colors.lightBlue )
 term.clear()
-local frost = paintutils.loadImage( ".frost" )
+local frost = paintutils.loadImage( "/images/.frost" )
 while ok do
     term.setTextColor( colors.white )
     term.setBackgroundColor( colors.lightBlue )
