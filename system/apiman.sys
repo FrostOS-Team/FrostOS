@@ -5,6 +5,5 @@ os.loadAPI("/.frostos/apis/logger")
 local FileList = fs.list("/.frostos/apis")
 
 for _, file in ipairs(FileList) do
-  os.loadAPI("/.frostos/apis/" .. file)
-  logger.info(log, "APIMan: Loaded API: ".. file)
+  logger.info(log, "APIMan: Found API: ".. file)
 end
