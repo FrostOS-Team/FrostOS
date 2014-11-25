@@ -1,3 +1,4 @@
+--[[ Used for program developers who need to manipulate FrostOS ]]--
 function runSys(path)
  if not path == path + ".sys" then
   path = path + ".sys"
