@@ -14,4 +14,13 @@ clear()
 term.setBackgroundColor(colors.red)
 centerText("Junk Manager")
 term.setCursorPos(1,2)
-centerText("Scanning for junk...")
+centerText("Scanning for duplicate files...")
+local FileList = fs.list("/")
+
+for _, file in ipairs(FileList) do
+ term.setBackgroundColor(colors.red)
+ count = 3
+ term.setCursorPos(1,count)
+ centerText(file)
+ count = count + 1
+end
