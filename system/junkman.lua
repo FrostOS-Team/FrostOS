@@ -21,6 +21,7 @@ for _, file in ipairs(FileList) do
  term.setBackgroundColor(colors.red)
  count = 3
  term.setCursorPos(1,count)
- centerText(file)
+ centerText("Analizying: " .. file)
+ --[[ Alalization ]]--
  count = count + 1
 end
