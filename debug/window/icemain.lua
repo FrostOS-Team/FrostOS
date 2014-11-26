@@ -26,13 +26,13 @@ local app = {
 		return coroutine.status( self.co )
 	end,
 	resume = function( self, ... )
-		coroutine.resume( self.co, ... )
+		local sFilter = coroutine.resume( self.co, ... )
 		self:getWindow().redraw()
+		return sFilter
 	end,
 }
 
 function launch( sFile, ... )
-	local tArgs = {...}
 	if not fs.exists( sFile ) then
 		error( "No such file: " .. sFile, 2 )
 	end
@@ -46,7 +46,8 @@ function launch( sFile, ... )
 	local new = {
 		name = sFile,
 		window = icewindow.init( term.current(), 4, 4, 20, 10, sFile ),
-		co = coroutine.create( function() local ok, err = pcall( func, unpack( tArgs ) ) if err then error( err, 0 ) end end ),
+		co = coroutine.create( func end ),
+		tArgs = { ... }
 	}
 	setmetatable( new, { __index = app })
 	tApps[ #tApps + 1 ] = new
@@ -56,16 +57,21 @@ end
 
 function run()
 	local origin = term.current()
+	local tFilters = {}
+	local event = {}
 	while true do
-		local event = { os.pullEvent() }
 		for i, app in ipairs( tApps ) do
-			if app:getStatus() == "suspended" then
+			if (not tFilters[ i ] or event[ 1 ] == tFilters[ i ] or event[ 1 ] == "terminate") and app:getStatus() == "suspended" then
 				term.redirect( app:getWindow() )
-				app:resume( unpack( event ) )
+				local choice = app.tArgs or event
+				tFilters[ i ] = app:resume( unpack( choice ) )
 				term.redirect( term.current() )
+				app.tArgs = nil
 			elseif app:getStatus() == "dead" then
 				table.remove( tApps, i )
+				table.remove( tFilters, i )
 			end
 		end
+		event = { os.pullEvent }
 	end
 end
