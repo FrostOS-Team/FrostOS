@@ -47,8 +47,8 @@ function launch( sFile, ... )
 		name = sFile,
 		window = icewindow.init( term.current(), 4, 4, 20, 10, sFile ),
 		co = coroutine.create( func ),
-		tArgs = { ... }
 	}
+	new.sFilter = coroutine.resume( new.co )
 	setmetatable( new, { __index = app })
 	tApps[ #tApps + 1 ] = new
 	icewindow.drawToolBar( new, colors.blue, colors.lightBlue )
@@ -61,10 +61,13 @@ function run()
 	local event = {}
 	while true do
 		for i, app in ipairs( tApps ) do
+			if app.sFilter then
+				tFilters[ i ] = app.sFilter
+				app.sFilter = nil
+			end
 			if (not tFilters[ i ] or event[ 1 ] == tFilters[ i ] or event[ 1 ] == "terminate") and app:getStatus() == "suspended" then
 				term.redirect( app:getWindow() )
-				local choice = app.tArgs or event
-				tFilters[ i ] = app:resume( unpack( choice ) )
+				tFilters[ i ] = app:resume( unpack( event ) )
 				term.redirect( term.current() )
 				app.tArgs = nil
 			elseif app:getStatus() == "dead" then
