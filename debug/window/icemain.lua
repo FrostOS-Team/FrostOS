@@ -46,7 +46,7 @@ function launch( sFile, ... )
 	local new = {
 		name = sFile,
 		window = icewindow.init( term.current(), 4, 4, 20, 10, sFile ),
-		co = coroutine.create( func end ),
+		co = coroutine.create( func ),
 		tArgs = { ... }
 	}
 	setmetatable( new, { __index = app })
