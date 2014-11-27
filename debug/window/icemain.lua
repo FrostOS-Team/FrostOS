@@ -8,10 +8,10 @@ function drawDock( bColor, tColor )
 		term.setCursorPos( 1, i )
 		term.write( '   ' )
 	end
-	local y = 3
+	local y = 2
 	for k, v in pairs( tApps ) do
-		term.setCursorPos( 1, y )
-		term.write( v:getName():sub( 1, 3 ) )
+		v:showIcn( 1, y )
+		y = y + 2
 	end
 end
 
@@ -26,13 +26,14 @@ local app = {
 		return coroutine.status( self.co )
 	end,
 	resume = function( self, ... )
-		local sFilter = coroutine.resume( self.co, ... )
-		self:getWindow().redraw()
-		return sFilter
+		return coroutine.resume( self.co, ... )
 	end,
+	showIcn = function( self, x, y )
+		paintutils.drawImage( self.icn, x, y )
+	end
 }
 
-function launch( sFile, ... )
+function launch( sFile, sIcn, ... )
 	if not fs.exists( sFile ) then
 		error( "No such file: " .. sFile, 2 )
 	end
@@ -47,11 +48,15 @@ function launch( sFile, ... )
 		name = sFile,
 		window = icewindow.init( term.current(), 4, 4, 20, 10, sFile ),
 		co = coroutine.create( func ),
+		icn = paintutils.loadImage( sIcn )
 	}
+	local origin = term.current()
+	term.redirect( new.window )
 	new.sFilter = coroutine.resume( new.co )
+	term.redirect( origin )
 	setmetatable( new, { __index = app })
-	tApps[ #tApps + 1 ] = new
-	icewindow.drawToolBar( new, colors.blue, colors.lightBlue )
+	tApps[#tApps+1] = new
+	icewindow.drawToolBar(new,colors.blue,colors.lightBlue)
 	return new
 end
 
@@ -59,7 +64,7 @@ function run()
 	local origin = term.current()
 	local tFilters = {}
 	local event = {}
-	while true do
+	while #tApps > 0 do
 		for i, app in ipairs( tApps ) do
 			if app.sFilter then
 				tFilters[ i ] = app.sFilter
