@@ -1,14 +1,7 @@
 local bigx, bigy = term.getSize() --note: this will need changed.
 
 function init( win, posx, posy, sizex, sizey, title )
-	local new = {parent = win, posx = posx, posy = posy, sSizex = sizex, sSizey = sizey, x = 1, y = 1, title = title, tColor = colors.white, bColor = colors.black, state = "small", saved = {} }
-	
-	for x = 1, sizex do
-		new.saved[ x ] = {}
-		for y = 1, sizey do
-			new.saved[ x ][ y ] = { bUpdate = false, char = ' ', tColor = colors.white, bColor = colors.black }
-		end
-	end
+	local new = {parent = win, posx = posx, posy = posy, sSizex = sizex, sSizey = sizey, x = 1, y = 1, title = title, tColor = colors.white, bColor = colors.black, state = "small" }
 	
 	new.isColor = function()
 		return new.parent.isColor()
@@ -66,20 +59,18 @@ function init( win, posx, posy, sizex, sizey, title )
 	
 	new.setBackgroundColour = new.setBackgroundColor
 	
-	new.write = function( sText, bOverride )
+	new.write = function( sText )
 		local x,y = new.parent.getCursorPos()
 		local px, py = new.getPosition()
 		local tx, ty = new.getCursorPos()
-		for c in sText:gmatch( '.' ) do
-			if new.saved[ tx ] and new.saved[ tx ][ ty ] then
-				new.saved[ tx ][ ty ].char = c
-				new.saved[ tx ][ ty ].tColor, new.saved[ tx ][ ty ].bColor = new.tColor, new.bColor
-			else
-				break
-			end
-			tx = tx + 1
-			new.setCursorPos( tx, ty )
-		end
+		new.parent.setCursorPos( px + tx - 1, py + ty - 1 )
+		new.parent.setTextColor( new.tColor )
+		new.parent.setBackgroundColor( new.bColor )
+		new.parent.write( sText )
+		local newx, newy = new.parent.getCursorPos()
+		new.x, new.y = newx - x, newy - y
+		new.parent.setCursorPos( x, y )
+		--end render--
 	end
 	
 	new.clear = function()
