@@ -1,4 +1,5 @@
 --Bedrock Build: 262
+--This will be temp until we get IceWindow & IceMain working. Soon it will just be an API that we release all over CC forums.
 --This code is squished down in to one, rather hard to read file.
 --As such it is not much good for anything other than being loaded as an API.
 --If you want to look at the code to learn from it, copy parts or just take a look,
