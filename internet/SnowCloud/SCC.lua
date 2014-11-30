@@ -38,10 +38,10 @@ function SnowCloud:Connect()
  end
 end
 function SnowCloud:Stop(adminpassword)
- adminpass = SnowCloud:SendMsg("getadminpass")
+ adminpass = SnowCloud:SendMsg("getadminpass") -- This has to be called instead of the password being hardcoded into the program. The server will deny any requests for "stopserver" unless "getadminpass" has been provoked. You also need to send the hashed password back to the server to verify the stop request.
  SHA-256.sha256(adminpassword)
  if adminpassword == adminpass then
-  SnowCloud:SendMsg("stopserver")
+  SnowCloud:SendMsg("stopserver ".. adminpassword)
  elseif not adminpassword == adminpass then
   error("[SnowCloud]: You do not have permissions to run this command. Reason: Invalid Password", 0)
  end
