@@ -1,4 +1,4 @@
 --[[ Crafter Client ]]--
 os.loadAPI("../SnowCloud/SCC")
---[[ Access The SnowCloud To See If Online ]]--
-SCC.SnowCloud:SendMsg("DNR") -- A do not respond request. The SendMsg function runs SnowCloud:State() and finds out the state of the snowcloud.
+SCC.SnowCloud:Connect() -- has to be invoked on every program before it can access the SnowCloud. This is one of the programs that will use the SnowCloud.
+
