@@ -1,3 +1,11 @@
+FrostOS
+=======
+This OS specializes in usability. We hope you like our OS!
+
+Installation:
+=======
+COMING SOON
+
 MOTTO
 =======
 
