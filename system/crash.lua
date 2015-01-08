@@ -47,9 +47,10 @@ shiftAll()
 f = fs.open( "/dumps/BSOD1.dmp", "w" )
 f.write( "------------ FrostOS Crash Dump ------------\n" )
 f.write( "You will find the rest of the crash report here! " )
-if --[[ Get Error ]]-- then
+event, err = os.pullEvent( "bsod" )
+if err == "program" then
  f.write( BSODErrorCodes[ "Program Error" ] )
-elseif --[[ Get System Error ]]-- then
+elseif err == "system" then
  f.write( BSODErrorCodes[ "System Error" ] )
 else
  f.write( BSODErrorCodes[ "Unknown" ] )
