@@ -1,4 +1,13 @@
 --[[ Crashing Screen ( aka a BSOD ) ]]--
+--[[ Needs to stay running... use parallel.waitForAny( function()
+  shell.run( "/system/crash.sys" )
+end,
+function()
+  shell.run( "/startup" )
+end )
+--]]
+
+
 local BSODtheme = {}
 local BSODErrorCodes = {
 [ "Program Error" ] = "STOP 00000x1C\nThis Error Means That The Program\nEncountered A Problem.",
@@ -32,30 +41,32 @@ function setBSODtheme( background, foreground )
   BSODtheme[1] = background
   BSODtheme[2] = foreground
 end
-clear()
-setBSODtheme( colors.blue, colors.white )
-term.setBackgroundColor(BSODtheme[1])
-term.setTextColor(BSODtheme[2])
-cprint( "------------ FrostOS Crash Report ------------" )
-cprint( "An error has occurred and FrostOS has shut down." )
-cprint( "Please report this crash as an issue in the Github" )
-cprint( " Repo as an issue, labeled \"Crash\". The file you" )
-cprint( "want to upload is the \"BSOD1.dmp\" file. Not the" )
-cprint( "ones with higher numbers like \"BSOD20.dmp\" because" )
-cprint( "they are old ones. A dump file will be generated..." )
-shiftAll()
-f = fs.open( "/dumps/BSOD1.dmp", "w" )
-f.write( "------------ FrostOS Crash Dump ------------\n" )
-f.write( "You will find the rest of the crash report here! " )
-event, err = os.pullEvent( "bsod" )
-if err == "program" then
- f.write( BSODErrorCodes[ "Program Error" ] )
-elseif err == "system" then
- f.write( BSODErrorCodes[ "System Error" ] )
-else
- f.write( BSODErrorCodes[ "Unknown" ] )
+if e == "bsod" then
+  clear()
+  setBSODtheme( colors.blue, colors.white )
+  term.setBackgroundColor(BSODtheme[1])
+  term.setTextColor(BSODtheme[2])
+  cprint( "------------ FrostOS Crash Report ------------" )
+  cprint( "An error has occurred and FrostOS has shut down." )
+  cprint( "Please report this crash as an issue in the Github" )
+  cprint( " Repo as an issue, labeled \"Crash\". The file you" )
+  cprint( "want to upload is the \"BSOD1.dmp\" file. Not the" )
+  cprint( "ones with higher numbers like \"BSOD20.dmp\" because" )
+  cprint( "they are old ones. A dump file will be generated..." )
+  shiftAll()
+  f = fs.open( "/dumps/BSOD1.dmp", "w" )
+  f.write( "------------ FrostOS Crash Dump ------------\n" )
+  f.write( "You will find the rest of the crash report here! " )
+  local e = { os.pullEventRaw( "bsod" ) }
+    if err == "program" then
+     f.write( BSODErrorCodes[ "Program Error" ] )
+    elseif err == "system" then
+     f.write( BSODErrorCodes[ "System Error" ] )
+    else
+     f.write( BSODErrorCodes[ "Unknown" ] )
+  end
+  f.close()
+  cprint( "Finished generating dump file. Rebooting..." )
+  sleep( 3 )
+  os.reboot()
 end
-f.close()
-cprint( "Finished generating dump file. Rebooting..." )
-sleep( 3 )
-os.reboot()
