@@ -1,0 +1,4 @@
+--[[ This file defines stuff ]]--
+function crash( type )
+  os.queueEvent( "bsod", type )
+end
