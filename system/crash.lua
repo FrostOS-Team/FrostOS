@@ -41,7 +41,8 @@ function setBSODtheme( background, foreground )
   BSODtheme[1] = background
   BSODtheme[2] = foreground
 end
-if e == "bsod" then
+local e = { os.pullEventRaw( "bsod" ) }
+if e[1] == "bsod" then
   clear()
   setBSODtheme( colors.blue, colors.white )
   term.setBackgroundColor(BSODtheme[1])
@@ -57,10 +58,9 @@ if e == "bsod" then
   f = fs.open( "/dumps/BSOD1.dmp", "w" )
   f.write( "------------ FrostOS Crash Dump ------------\n" )
   f.write( "You will find the rest of the crash report here! " )
-  local e = { os.pullEventRaw( "bsod" ) }
-    if err == "program" then
+    if e[2] == "program" then
      f.write( BSODErrorCodes[ "Program Error" ] )
-    elseif err == "system" then
+    elseif e[2] == "system" then
      f.write( BSODErrorCodes[ "System Error" ] )
     else
      f.write( BSODErrorCodes[ "Unknown" ] )
