@@ -1,5 +1,6 @@
 --[[ SnowCloud Communicate ]]--
-local SnowCloud = "5.230.233.77/fOS/SnowCloud/server.php?CC=1"
+local SnowCloud = {}
+local SnowCloudURL = "5.230.233.77/fOS/SnowCloud/server.php?CC=1"
 os.loadAPI("/.frostos/apis/SHA-256")
 function SnowCloud:State()
  SnowCloudState = "Nil"
@@ -20,7 +21,7 @@ function SnowCloud:SendMsg(msg)
  elseif SnowCloudState == "timeout" then
   printError("The SnowCloud connection timed out. Please try again later.")
  elseif SnowCloudState == "online" then
-  http.post(SnowCloud, SnowCloudMsg)
+  http.post(SnowCloudURL, SnowCloudMsg)
  end
 end
 function SnowCloud:Connect()
