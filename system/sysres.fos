@@ -7,12 +7,25 @@ local filesToBeRestored = fs.list( sysResDir )
 local filesToBeRestoredCount = #filesToBeRestored
 
 local AnsNeeded = true
+if filesToBeRestoredCount == 0 then printError( "No files to restore!" ) return end
 print( "WARNING: System restore will now restore your files to the last restore point created. The process CANNOT be interupted. " )
 while AnsNeeded do
   write( "Do you want to continue? (Y/N) > " )
   ans = read()
   if ans:lower() == "y" then
     AnsNeeded = false
+    print( "System restore is now running. Do NOT turn off the computer.")
+    for i = 1, filesToBeRestoredCount do
+      fs.delete( "/" .. filesToBeRestored[ i ] )
+      fs.copy( filesToBeRestored[ i ], "/" )
+      print( "Restored File: " .. filesToBeRestored[ i ] )
+    end
+    sleep( 3 )
+    print( "System restore has finished and your computer is ready to be rebooted." )
+    print( "Press any key to continue." )
+    if os.pullEvent() == key then
+      os.reboot()
+    end
   elseif ans:lower() == "n" then
     printError( "Process Canceled." )
     return
