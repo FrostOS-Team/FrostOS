@@ -17,7 +17,7 @@ while AnsNeeded do
     print( "System restore is now running. Do NOT turn off the computer.")
     for i = 1, filesToBeRestoredCount do
       fs.delete( "/" .. filesToBeRestored[ i ] )
-      fs.copy( filesToBeRestored[ i ], "/" )
+      fs.copy( ( sysResDir .. filesToBeRestored[ i ] ), "/" )
       print( "Restored File: " .. filesToBeRestored[ i ] )
     end
     sleep( 3 )
