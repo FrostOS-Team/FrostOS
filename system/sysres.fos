@@ -23,7 +23,7 @@ while AnsNeeded do
     sleep( 3 )
     print( "System restore has finished and your computer is ready to be rebooted." )
     print( "Press any key to continue." )
-    if os.pullEvent() == key then
+    if os.pullEvent() == "key" then
       os.reboot()
     end
   elseif ans:lower() == "n" then
